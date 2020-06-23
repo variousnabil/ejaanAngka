@@ -60,7 +60,7 @@ const ribuan = num => {
     } else {
         ribu = `${satuan(num[0])} ribu`;
     }
-    if (num[1] === "0" && num[2] === "0" && num[3] === "0") {           // X00X                                                    
+    if (num[1] === "0" && num[2] === "0" && num[3] === "0") {           // X000                                                    
         return `${ribu}`;
     }
     if (num[1] === "0" && num[2] === "0") {                             // X00X                                                    
@@ -72,7 +72,29 @@ const ribuan = num => {
     return `${ribu} ${ratusan(num.substr(1, 3))}`;                      // XXXX
 }
 
+const puluhanRibuan = num => {
+    let puluhanRibu = `${puluhan(num.substr(0, 2))} ribu`;
+    if (num[2] === "0" && num[3] === "0" && num[4] === "0") {       // XX000
+        return puluhanRibu;
+    }
+    if (num[2] === "0" && num[3] === "0" && num[4] !== "0") {       // XX00X
+        return `${puluhanRibu} ${satuan(num[4])}`
+    }
+    if (num[2] === "0" && num[3] !== "0" && num[4] !== "0") {       // XX0XX
+        return `${puluhanRibu} ${puluhan(num.substr(3, 2))}`;
+    }
+    return `${puluhanRibu} ${ratusan(num.substr(2, 3))}`;           // XXXXX
+}
+
 const ejaanAngka = (num) => {
+
+    // check if the passed parameter is a number
+    const regex = /\d+/;
+    if (!regex.test(num) || num[0] === "0") {
+        console.log("error: can not proceed since the number inputted is invalid or not a positive number");
+        return;
+    }
+
     if (num.length === 1) {
         return satuan(num);
     }
@@ -88,6 +110,10 @@ const ejaanAngka = (num) => {
     if (num.length === 4) {
         return ribuan(num);
     }
+
+    if (num.length === 5) {
+        return puluhanRibuan(num);
+    }
 }
 
-console.log(ejaanAngka("9999"));                                
+console.log(ejaanAngka("0"));                                
