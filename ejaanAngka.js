@@ -116,4 +116,4 @@ const ejaanAngka = (num) => {
     }
 }
 
-console.log(ejaanAngka("0"));                                
+console.log(ejaanAngka("99999"));                                
