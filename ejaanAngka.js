@@ -152,6 +152,32 @@ const puluhanJutaan = num => {
     return `${puluhanJuta} ${ratusanRibuan(num.substr(2, 6))}`;             // XXXXXXXX
 }
 
+const ratusanJutaan = num => {
+    let ratusanJuta = `${ratusan(num.substr(0, 3))} juta`;
+    if (num[3] === "0" && num[4] === "0" && num[5] === "0"
+        && num[6] === "0" && num[7] === "0" && num[8] === "0") {            // XXX000000
+        return ratusanJuta;
+    }
+    if (num[3] === "0" && num[4] === "0" && num[5] === "0"
+        && num[6] === "0" && num[7] === "0") {                              // XXX00000X
+        return `${ratusanJuta} ${satuan(num[8])}`;
+    }
+    if (num[3] === "0" && num[4] === "0" && num[5] === "0"
+        && num[6] === "0") {                                                // XXX0000XX
+        return `${ratusanJuta} ${puluhan(num.substr(7, 2))}`;
+    }
+    if (num[3] === "0" && num[4] === "0" && num[5] === "0") {               // XXX000XXX
+        return `${ratusanJuta} ${ratusan(num.substr(6, 3))}`;
+    }
+    if (num[3] === "0" && num[4] === "0") {                                 // XXX00XXXX
+        return `${ratusanJuta} ${ribuan(num.substr(5, 4))}`;
+    }
+    if (num[3] === "0") {                                                   // XXX0XXXXX
+        return `${ratusanJuta} ${puluhanRibuan(num.substr(4, 5))}`;
+    }
+    return `${ratusanJuta} ${ratusanRibuan(num.substr(3, 6))}`;             // XXXXXXXXX
+}
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a number
     const regex = /\d+/;
@@ -168,31 +194,7 @@ const ejaanAngka = (num) => {
     if (num.length === 6) return ratusanRibuan(num);
     if (num.length === 7) return jutaan(num);
     if (num.length === 8) return puluhanJutaan(num);
-    if (num.length === 9) {
-        let ratusanJuta = `${ratusan(num.substr(0, 3))} juta`;
-        if (num[3] === "0" && num[4] === "0" && num[5] === "0"
-            && num[6] === "0" && num[7] === "0" && num[8] === "0") {            // XXX000000
-            return ratusanJuta;
-        }
-        if (num[3] === "0" && num[4] === "0" && num[5] === "0"
-            && num[6] === "0" && num[7] === "0") {                              // XXX00000X
-            return `${ratusanJuta} ${satuan(num[8])}`;
-        }
-        if (num[3] === "0" && num[4] === "0" && num[5] === "0"
-            && num[6] === "0") {                                                // XXX0000XX
-            return `${ratusanJuta} ${puluhan(num.substr(7, 2))}`;
-        }
-        if (num[3] === "0" && num[4] === "0" && num[5] === "0") {           // XXX000XXX
-            return `${ratusanJuta} ${ratusan(num.substr(6, 3))}`;
-        }
-        if (num[3] === "0" && num[4] === "0") {                             // XXX00XXXX
-            return `${ratusanJuta} ${ribuan(num.substr(5, 4))}`;
-        }
-        if (num[3] === "0") {                                               // XXX0XXXXX
-            return `${ratusanJuta} ${puluhanRibuan(num.substr(4, 5))}`;
-        }
-        return `${ratusanJuta} ${ratusanRibuan(num.substr(3, 6))}`;          // XXXXXXXXX
-    }
+    if (num.length === 9) return ratusanJutaan(num);
 }
 
 console.log(ejaanAngka("999999999"));                                
