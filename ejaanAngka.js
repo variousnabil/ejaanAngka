@@ -196,7 +196,7 @@ const milyaran = num => {
         return `${milyar} ${puluhan(num.substr(8, 2))}`;
     }
     if (num[1] === '0' && num[2] === '0' && num[3] === '0' &&
-        num[4] === '0' && num[5] === '0' && num[6] === '0') {                       // X000000XXX                                     // X0000000XX
+        num[4] === '0' && num[5] === '0' && num[6] === '0') {                       // X000000XXX                                     
         return `${milyar} ${ratusan(num.substr(7, 3))}`;
     }
     if (num[1] === '0' && num[2] === '0' && num[3] === '0' &&
@@ -207,7 +207,7 @@ const milyaran = num => {
         num[4] === '0') {                                                           // X0000XXXXX
         return `${milyar} ${puluhanRibuan(num.substr(5, 5))}`;
     }
-    if (num[1] === '0' && num[2] === '0' && num[3] === '0') {                       // X000XXXXXX                                           // X0000000XX
+    if (num[1] === '0' && num[2] === '0' && num[3] === '0') {                       // X000XXXXXX                                           
         return `${milyar} ${ratusanRibuan(num.substr(4, 6))}`;
     }
     if (num[1] === '0' && num[2] === '0') {                                         // X00XXXXXXX 
