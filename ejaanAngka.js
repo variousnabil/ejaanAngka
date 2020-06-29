@@ -219,6 +219,47 @@ const milyaran = num => {
     return `${milyar} ${ratusanJutaan(num.substr(1, 9))}`;                          // XXXXXXXXXX 
 }
 
+const puluhanMilyaran = num => {
+    let puluhanMilyar = `${puluhan(num.substr(0, 2))} milyar`;
+    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
+        num[5] === '0' && num[6] === '0' && num[7] === '0' &&
+        num[8] === '0' && num[9] === '0' && num[10] === '0') {                       // XX000000000
+        return puluhanMilyar;
+    }
+    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
+        num[5] === '0' && num[6] === '0' && num[7] === '0' &&
+        num[8] === '0' && num[9] === '0') {                                         // XX00000000X
+        return `${puluhanMilyar} ${satuan(num[10])}`;
+    }
+    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
+        num[5] === '0' && num[6] === '0' && num[7] === '0' &&
+        num[8] === '0') {                                                           // XX0000000XX
+        return `${puluhanMilyar} ${puluhan(num.substr(9, 2))}`;
+    }
+    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
+        num[5] === '0' && num[6] === '0' && num[7] === '0') {                       // XX000000XXX                                     
+        return `${puluhanMilyar} ${ratusan(num.substr(8, 3))}`;
+    }
+    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
+        num[5] === '0' && num[6] === '0') {                                         // XX00000XXXX
+        return `${puluhanMilyar} ${ribuan(num.substr(7, 4))}`;
+    }
+    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
+        num[5] === '0') {                                                           // XX0000XXXXX
+        return `${puluhanMilyar} ${puluhanRibuan(num.substr(6, 5))}`;
+    }
+    if (num[2] === '0' && num[3] === '0' && num[4] === '0') {                       // XX000XXXXXX                                           
+        return `${puluhanMilyar} ${ratusanRibuan(num.substr(5, 6))}`;
+    }
+    if (num[2] === '0' && num[3] === '0') {                                         // XX00XXXXXXX 
+        return `${puluhanMilyar} ${jutaan(num.substr(4, 7))}`;
+    }
+    if (num[2] === '0') {                                                           // XX0XXXXXXXX 
+        return `${puluhanMilyar} ${puluhanJutaan(num.substr(3, 8))}`;
+    }
+    return `${puluhanMilyar} ${ratusanJutaan(num.substr(2, 9))}`;                   // XXXXXXXXXXX 
+}
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a number
     const regex = /\d+/;
@@ -237,6 +278,7 @@ const ejaanAngka = (num) => {
     if (num.length === 8) return puluhanJutaan(num);
     if (num.length === 9) return ratusanJutaan(num);
     if (num.length === 10) return milyaran(num);
+    if (num.length === 11) return puluhanMilyaran(num);
 }
 
-console.log(ejaanAngka("9999999999"));                                
+console.log(ejaanAngka("99999999999"));                                
