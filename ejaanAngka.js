@@ -102,203 +102,77 @@ const ratusanRibuan = num => {
 
 const jutaan = num => {
     let juta = `${satuan(num[0])} juta`;
-    if (num[1] === "0" && num[2] === "0" && num[3] === "0"
-        && num[4] === "0" && num[5] === "0" && num[6] === "0") {            // X000000
-        return juta;
-    }
-    if (num[1] === "0" && num[2] === "0" && num[3] === "0"
-        && num[4] === "0" && num[5] === "0") {                              // X00000X
-        return `${juta} ${satuan(num[6])}`;
-    }
-    if (num[1] === "0" && num[2] === "0" && num[3] === "0"
-        && num[4] === "0") {                                                // X0000XX
-        return `${juta} ${puluhan(num.substr(5, 2))}`;
-    }
-    if (num[1] === "0" && num[2] === "0" && num[3] === "0") {               // X000XXX
-        return `${juta} ${ratusan(num.substr(4, 3))}`;
-    }
-    if (num[1] === "0" && num[2] === "0") {                                 // X00XXXX
-        return `${juta} ${ribuan(num.substr(3, 4))}`;
-    }
-    if (num[1] === "0") {                                                   // X0XXXXX
-        return `${juta} ${puluhanRibuan(num.substr(2, 5))}`;
-    }
-    return `${juta} ${ratusanRibuan(num.substr(1, 6))}`;                    // XXXXXXX
+    if (num[1] !== '0') return `${juta} ${ratusanRibuan(num.substr(1, 6))}`;  // XXXXXXX
+    if (num[2] !== '0') return `${juta} ${puluhanRibuan(num.substr(2, 5))}`;  // X0XXXXX
+    if (num[3] !== '0') return `${juta} ${ribuan(num.substr(3, 4))}`;         // X00XXXX 
+    if (num[4] !== '0') return `${juta} ${ratusan(num.substr(4, 3))}`;        // X000XXX  
+    if (num[5] !== '0') return `${juta} ${puluhan(num.substr(5, 2))}`;        // X0000XX  
+    if (num[6] !== '0') return `${juta} ${satuan(num.substr(6, 1))}`;         // X00000X
+    return juta;                                                              // X000000
 };
 
 const puluhanJutaan = num => {
     let puluhanJuta = `${puluhan(num.substr(0, 2))} juta`;
-    if (num[2] === "0" && num[3] === "0" && num[4] === "0"
-        && num[5] === "0" && num[6] === "0" && num[7] === "0") {            // XX000000
-        return puluhanJuta;
-    }
-    if (num[2] === "0" && num[3] === "0" && num[4] === "0"
-        && num[5] === "0" && num[6] === "0") {                              // XX00000X
-        return `${puluhanJuta} ${satuan(num[7])}`;
-    }
-    if (num[2] === "0" && num[3] === "0" && num[4] === "0"
-        && num[5] === "0") {                                                // XX0000XX
-        return `${puluhanJuta} ${puluhan(num.substr(6, 2))}`;
-    }
-    if (num[2] === "0" && num[3] === "0" && num[4] === "0") {               // XX000XXX
-        return `${puluhanJuta} ${ratusan(num.substr(5, 3))}`;
-    }
-    if (num[2] === "0" && num[3] === "0") {                                 // XX00XXXX
-        return `${puluhanJuta} ${ribuan(num.substr(4, 4))}`;
-    }
-    if (num[2] === "0") {                                                   // XX0XXXXX
-        return `${puluhanJuta} ${puluhanRibuan(num.substr(3, 5))}`;
-    }
-    return `${puluhanJuta} ${ratusanRibuan(num.substr(2, 6))}`;             // XXXXXXXX
+    if (num[2] !== '0') return `${puluhanJuta} ${ratusanRibuan(num.substr(2, 6))}`;  // XXXXXXXX
+    if (num[3] !== '0') return `${puluhanJuta} ${puluhanRibuan(num.substr(3, 5))}`;  // XX0XXXXX
+    if (num[4] !== '0') return `${puluhanJuta} ${ribuan(num.substr(4, 4))}`;         // XX00XXXX 
+    if (num[5] !== '0') return `${puluhanJuta} ${ratusan(num.substr(5, 3))}`;        // XX000XXX  
+    if (num[6] !== '0') return `${puluhanJuta} ${puluhan(num.substr(6, 2))}`;        // XX0000XX  
+    if (num[7] !== '0') return `${puluhanJuta} ${satuan(num.substr(7, 1))}`;         // XX00000X
+    return puluhanJuta;                                                              // XX000000
 }
 
 const ratusanJutaan = num => {
     let ratusanJuta = `${ratusan(num.substr(0, 3))} juta`;
-    if (num[3] === "0" && num[4] === "0" && num[5] === "0"
-        && num[6] === "0" && num[7] === "0" && num[8] === "0") {            // XXX000000
-        return ratusanJuta;
-    }
-    if (num[3] === "0" && num[4] === "0" && num[5] === "0"
-        && num[6] === "0" && num[7] === "0") {                              // XXX00000X
-        return `${ratusanJuta} ${satuan(num[8])}`;
-    }
-    if (num[3] === "0" && num[4] === "0" && num[5] === "0"
-        && num[6] === "0") {                                                // XXX0000XX
-        return `${ratusanJuta} ${puluhan(num.substr(7, 2))}`;
-    }
-    if (num[3] === "0" && num[4] === "0" && num[5] === "0") {               // XXX000XXX
-        return `${ratusanJuta} ${ratusan(num.substr(6, 3))}`;
-    }
-    if (num[3] === "0" && num[4] === "0") {                                 // XXX00XXXX
-        return `${ratusanJuta} ${ribuan(num.substr(5, 4))}`;
-    }
-    if (num[3] === "0") {                                                   // XXX0XXXXX
-        return `${ratusanJuta} ${puluhanRibuan(num.substr(4, 5))}`;
-    }
-    return `${ratusanJuta} ${ratusanRibuan(num.substr(3, 6))}`;             // XXXXXXXXX
+    if (num[3] !== '0') return `${ratusanJuta} ${ratusanRibuan(num.substr(3, 6))}`;  // XXXXXXXXX
+    if (num[4] !== '0') return `${ratusanJuta} ${puluhanRibuan(num.substr(4, 5))}`;  // XXX0XXXXX
+    if (num[5] !== '0') return `${ratusanJuta} ${ribuan(num.substr(5, 4))}`;         // XXX00XXXX 
+    if (num[6] !== '0') return `${ratusanJuta} ${ratusan(num.substr(6, 3))}`;        // XXX000XXX  
+    if (num[7] !== '0') return `${ratusanJuta} ${puluhan(num.substr(7, 2))}`;        // XXX0000XX  
+    if (num[8] !== '0') return `${ratusanJuta} ${satuan(num.substr(8, 1))}`;         // XXX00000X
+    return ratusanJuta;
 }
 
 const milyaran = num => {
     let milyar = `${satuan(num[0])} milyar`;
-    if (num[1] === '0' && num[2] === '0' && num[3] === '0' &&
-        num[4] === '0' && num[5] === '0' && num[6] === '0' &&
-        num[7] === '0' && num[8] === '0' && num[9] === '0') {                       // X000000000
-        return milyar;
-    }
-    if (num[1] === '0' && num[2] === '0' && num[3] === '0' &&
-        num[4] === '0' && num[5] === '0' && num[6] === '0' &&
-        num[7] === '0' && num[8] === '0') {                                         // X00000000X
-        return `${milyar} ${satuan(num[9])}`;
-    }
-    if (num[1] === '0' && num[2] === '0' && num[3] === '0' &&
-        num[4] === '0' && num[5] === '0' && num[6] === '0' &&
-        num[7] === '0') {                                                           // X0000000XX
-        return `${milyar} ${puluhan(num.substr(8, 2))}`;
-    }
-    if (num[1] === '0' && num[2] === '0' && num[3] === '0' &&
-        num[4] === '0' && num[5] === '0' && num[6] === '0') {                       // X000000XXX                                     
-        return `${milyar} ${ratusan(num.substr(7, 3))}`;
-    }
-    if (num[1] === '0' && num[2] === '0' && num[3] === '0' &&
-        num[4] === '0' && num[5] === '0') {                                         // X00000XXXX
-        return `${milyar} ${ribuan(num.substr(6, 4))}`;
-    }
-    if (num[1] === '0' && num[2] === '0' && num[3] === '0' &&
-        num[4] === '0') {                                                           // X0000XXXXX
-        return `${milyar} ${puluhanRibuan(num.substr(5, 5))}`;
-    }
-    if (num[1] === '0' && num[2] === '0' && num[3] === '0') {                       // X000XXXXXX                                           
-        return `${milyar} ${ratusanRibuan(num.substr(4, 6))}`;
-    }
-    if (num[1] === '0' && num[2] === '0') {                                         // X00XXXXXXX 
-        return `${milyar} ${jutaan(num.substr(3, 7))}`;
-    }
-    if (num[1] === '0') {                                                           // X0XXXXXXXX 
-        return `${milyar} ${puluhanJutaan(num.substr(2, 8))}`;
-    }
-    return `${milyar} ${ratusanJutaan(num.substr(1, 9))}`;                          // XXXXXXXXXX 
+    if (num[1] !== '0') return `${milyar} ${ratusanJutaan(num.substr(1, 9))}`;    // XXXXXXXXXX
+    if (num[2] !== '0') return `${milyar} ${puluhanJutaan(num.substr(2, 8))}`;    // X0XXXXXXXX
+    if (num[3] !== '0') return `${milyar} ${jutaan(num.substr(3, 7))}`;           // X00XXXXXXX
+    if (num[4] !== '0') return `${milyar} ${ratusanRibuan(num.substr(4, 6))}`;    // X000XXXXXX
+    if (num[5] !== '0') return `${milyar} ${puluhanRibuan(num.substr(5, 5))}`;    // X0000XXXXX
+    if (num[6] !== '0') return `${milyar} ${ribuan(num.substr(6, 4))}`;           // X00000XXXX
+    if (num[7] !== '0') return `${milyar} ${ratusan(num.substr(7, 3))}`;          // X000000XXX
+    if (num[8] !== '0') return `${milyar} ${puluhan(num.substr(8, 2))}`;          // X0000000XX
+    if (num[9] !== '0') return `${milyar} ${satuan(num[9])}`;                     // X000000000
+    return milyar;
 }
 
 const puluhanMilyaran = num => {
     let puluhanMilyar = `${puluhan(num.substr(0, 2))} milyar`;
-    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
-        num[5] === '0' && num[6] === '0' && num[7] === '0' &&
-        num[8] === '0' && num[9] === '0' && num[10] === '0') {                       // XX000000000
-        return puluhanMilyar;
-    }
-    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
-        num[5] === '0' && num[6] === '0' && num[7] === '0' &&
-        num[8] === '0' && num[9] === '0') {                                         // XX00000000X
-        return `${puluhanMilyar} ${satuan(num[10])}`;
-    }
-    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
-        num[5] === '0' && num[6] === '0' && num[7] === '0' &&
-        num[8] === '0') {                                                           // XX0000000XX
-        return `${puluhanMilyar} ${puluhan(num.substr(9, 2))}`;
-    }
-    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
-        num[5] === '0' && num[6] === '0' && num[7] === '0') {                       // XX000000XXX                                     
-        return `${puluhanMilyar} ${ratusan(num.substr(8, 3))}`;
-    }
-    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
-        num[5] === '0' && num[6] === '0') {                                         // XX00000XXXX
-        return `${puluhanMilyar} ${ribuan(num.substr(7, 4))}`;
-    }
-    if (num[2] === '0' && num[3] === '0' && num[4] === '0' &&
-        num[5] === '0') {                                                           // XX0000XXXXX
-        return `${puluhanMilyar} ${puluhanRibuan(num.substr(6, 5))}`;
-    }
-    if (num[2] === '0' && num[3] === '0' && num[4] === '0') {                       // XX000XXXXXX                                           
-        return `${puluhanMilyar} ${ratusanRibuan(num.substr(5, 6))}`;
-    }
-    if (num[2] === '0' && num[3] === '0') {                                         // XX00XXXXXXX 
-        return `${puluhanMilyar} ${jutaan(num.substr(4, 7))}`;
-    }
-    if (num[2] === '0') {                                                           // XX0XXXXXXXX 
-        return `${puluhanMilyar} ${puluhanJutaan(num.substr(3, 8))}`;
-    }
-    return `${puluhanMilyar} ${ratusanJutaan(num.substr(2, 9))}`;                   // XXXXXXXXXXX 
+    if (num[2] !== '0') return `${puluhanMilyar} ${ratusanJutaan(num.substr(2, 9))}`;    // XXXXXXXXXXX
+    if (num[3] !== '0') return `${puluhanMilyar} ${puluhanJutaan(num.substr(3, 8))}`;    // XX0XXXXXXXX
+    if (num[4] !== '0') return `${puluhanMilyar} ${jutaan(num.substr(4, 7))}`;           // XX00XXXXXXX
+    if (num[5] !== '0') return `${puluhanMilyar} ${ratusanRibuan(num.substr(5, 6))}`;    // XX000XXXXXX
+    if (num[6] !== '0') return `${puluhanMilyar} ${puluhanRibuan(num.substr(6, 5))}`;    // XX0000XXXXX
+    if (num[7] !== '0') return `${puluhanMilyar} ${ribuan(num.substr(7, 4))}`;           // XX00000XXXX
+    if (num[8] !== '0') return `${puluhanMilyar} ${ratusan(num.substr(8, 3))}`;          // XX000000XXX
+    if (num[9] !== '0') return `${puluhanMilyar} ${puluhan(num.substr(9, 2))}`;          // XX0000000XX
+    if (num[10] !== '0') return `${puluhanMilyar} ${satuan(num[10])}`;                   // XX000000000
+    return puluhanMilyar;
 }
 
 const ratusanMilyaran = num => {
     let ratusanMilyar = `${ratusan(num.substr(0, 3))} milyar`;
-    if (num[3] === '0' && num[4] === '0' && num[5] === '0' &&
-        num[6] === '0' && num[7] === '0' && num[8] === '0' &&
-        num[9] === '0' && num[10] === '0' && num[11] === '0') {                       // XXX000000000
-        return ratusanMilyar;
-    }
-    if (num[3] === '0' && num[4] === '0' && num[5] === '0' &&
-        num[6] === '0' && num[7] === '0' && num[8] === '0' &&
-        num[9] === '0' && num[10] === '0') {                                        // XXX00000000X
-        return `${ratusanMilyar} ${satuan(num[11])}`;
-    }
-    if (num[3] === '0' && num[4] === '0' && num[5] === '0' &&
-        num[6] === '0' && num[7] === '0' && num[8] === '0' &&
-        num[9] === '0') {                                                           // XXX0000000XX
-        return `${ratusanMilyar} ${puluhan(num.substr(10, 2))}`;
-    }
-    if (num[3] === '0' && num[4] === '0' && num[5] === '0' &&
-        num[6] === '0' && num[7] === '0' && num[8] === '0') {                       // XXX000000XXX                                     
-        return `${ratusanMilyar} ${ratusan(num.substr(9, 3))}`;
-    }
-    if (num[3] === '0' && num[4] === '0' && num[5] === '0' &&
-        num[6] === '0' && num[7] === '0') {                                         // XXX00000XXXX
-        return `${ratusanMilyar} ${ribuan(num.substr(8, 4))}`;
-    }
-    if (num[3] === '0' && num[4] === '0' && num[5] === '0' &&
-        num[6] === '0') {                                                           // XXX0000XXXXX
-        return `${ratusanMilyar} ${puluhanRibuan(num.substr(7, 5))}`;
-    }
-    if (num[3] === '0' && num[4] === '0' && num[5] === '0') {                       // XXX000XXXXXX                                           
-        return `${ratusanMilyar} ${ratusanRibuan(num.substr(6, 6))}`;
-    }
-    if (num[3] === '0' && num[4] === '0') {                                         // XXX00XXXXXXX 
-        return `${ratusanMilyar} ${jutaan(num.substr(5, 7))}`;
-    }
-    if (num[3] === '0') {                                                           // XXX0XXXXXXXX 
-        return `${ratusanMilyar} ${puluhanJutaan(num.substr(4, 8))}`;
-    }
-    return `${ratusanMilyar} ${ratusanJutaan(num.substr(3, 9))}`;                   // XXXXXXXXXXXX 
+    if (num[3] !== '0') return `${ratusanMilyar} ${ratusanJutaan(num.substr(3, 9))}`;    // XXXXXXXXXXXX
+    if (num[4] !== '0') return `${ratusanMilyar} ${puluhanJutaan(num.substr(4, 8))}`;    // XXX0XXXXXXXX
+    if (num[5] !== '0') return `${ratusanMilyar} ${jutaan(num.substr(5, 7))}`;           // XXX00XXXXXXX
+    if (num[6] !== '0') return `${ratusanMilyar} ${ratusanRibuan(num.substr(6, 6))}`;    // XXX000XXXXXX
+    if (num[7] !== '0') return `${ratusanMilyar} ${puluhanRibuan(num.substr(7, 5))}`;    // XXX0000XXXXX
+    if (num[8] !== '0') return `${ratusanMilyar} ${ribuan(num.substr(8, 4))}`;           // XXX00000XXXX
+    if (num[9] !== '0') return `${ratusanMilyar} ${ratusan(num.substr(9, 3))}`;          // XXX000000XXX
+    if (num[10] !== '0') return `${ratusanMilyar} ${puluhan(num.substr(10, 2))}`;        // XXX0000000XX
+    if (num[11] !== '0') return `${ratusanMilyar} ${satuan(num[11])}`;                   // XXX000000000
+    return ratusanMilyar;
 };
 
 const ejaanAngka = (num) => {
@@ -323,4 +197,4 @@ const ejaanAngka = (num) => {
     if (num.length === 12) return ratusanMilyaran(num);
 }
 
-console.log(ejaanAngka("999999999999"));                                
+console.log(ejaanAngka("23809821"));
