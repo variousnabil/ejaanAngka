@@ -1,40 +1,21 @@
-const satuan = (number) => {
-    switch (number) {
-        case "1":
-            return "satu";
-        case "2":
-            return "dua";
-        case "3":
-            return "tiga";
-        case "4":
-            return "empat";
-        case "5":
-            return "lima";
-        case "6":
-            return "enam";
-        case "7":
-            return "tujuh";
-        case "8":
-            return "delapan";
-        case "9":
-            return "sembilan";
-    }
+const satuan = num => {
+    if (num === '1') return 'satu';
+    if (num === '2') return 'dua';
+    if (num === '3') return 'tiga';
+    if (num === '4') return 'empat';
+    if (num === '5') return 'lima';
+    if (num === '6') return 'enam';
+    if (num === '7') return 'tujuh';
+    if (num === '8') return 'delapan';
+    if (num === '9') return 'sembilan';
 };
 
 const puluhan = num => {
-    if (num === "10") {                                                     // 10
-        return "sepuluh";
-    }
-    if (num === "11") {                                                     // 11
-        return "sebelas";
-    }
-    if (num[0] === "1") {                                                   // 1X
-        return `${satuan(num[1])} belas`;
-    }
-    if (num[1] === "0") {                                                   // X0
-        return `${satuan(num[0])} puluh`;
-    }
-    return `${satuan(num[0])} puluh ${satuan(num[1])}`;                     // XX
+    if (num === "10") return "sepuluh";
+    if (num === "11") return "sebelas";
+    if (num[0] === "1") return `${satuan(num[1])} belas`;   // 1X
+    if (num[1] === "0") return `${satuan(num[0])} puluh`;   // X0
+    return `${satuan(num[0])} puluh ${satuan(num[1])}`;     // XX
 };
 
 const ratusan = num => {
@@ -44,13 +25,9 @@ const ratusan = num => {
     } else {
         ratus = `${satuan(num[0])} ratus`;
     }
-    if (num[1] === "0" && num[2] === "0") {                                 // X00
-        return `${ratus}`;
-    }
-    if (num[1] === "0") {                                                   // X0X
-        return `${ratus} ${satuan(num[2])}`;
-    }
-    return `${ratus} ${puluhan(num.substr(1, 2))}`;                         // XXX
+    if (num[1] !== '0') return `${ratus} ${puluhan(num.substr(1, 2))}`;     // XXX
+    if (num[2] !== '0') return `${ratus} ${satuan(num[2])}`;                // X0X
+    return `${ratus}`;                                                      // X00
 };
 
 const ribuan = num => {
@@ -112,7 +89,7 @@ const ratusanJutaan = num => {
     if (num[6] !== '0') return `${ratusanJuta} ${ratusan(num.substr(6, 3))}`;        // XXX000XXX  
     if (num[7] !== '0') return `${ratusanJuta} ${puluhan(num.substr(7, 2))}`;        // XXX0000XX  
     if (num[8] !== '0') return `${ratusanJuta} ${satuan(num.substr(8, 1))}`;         // XXX00000X
-    return ratusanJuta;
+    return ratusanJuta;                                                              // XXX000000   
 }
 
 const milyaran = num => {
@@ -125,8 +102,8 @@ const milyaran = num => {
     if (num[6] !== '0') return `${milyar} ${ribuan(num.substr(6, 4))}`;           // X00000XXXX
     if (num[7] !== '0') return `${milyar} ${ratusan(num.substr(7, 3))}`;          // X000000XXX
     if (num[8] !== '0') return `${milyar} ${puluhan(num.substr(8, 2))}`;          // X0000000XX
-    if (num[9] !== '0') return `${milyar} ${satuan(num[9])}`;                     // X000000000
-    return milyar;
+    if (num[9] !== '0') return `${milyar} ${satuan(num[9])}`;                     // X00000000X
+    return milyar;                                                                // X000000000
 }
 
 const puluhanMilyaran = num => {
@@ -139,8 +116,8 @@ const puluhanMilyaran = num => {
     if (num[7] !== '0') return `${puluhanMilyar} ${ribuan(num.substr(7, 4))}`;           // XX00000XXXX
     if (num[8] !== '0') return `${puluhanMilyar} ${ratusan(num.substr(8, 3))}`;          // XX000000XXX
     if (num[9] !== '0') return `${puluhanMilyar} ${puluhan(num.substr(9, 2))}`;          // XX0000000XX
-    if (num[10] !== '0') return `${puluhanMilyar} ${satuan(num[10])}`;                   // XX000000000
-    return puluhanMilyar;
+    if (num[10] !== '0') return `${puluhanMilyar} ${satuan(num[10])}`;                   // XX00000000X
+    return puluhanMilyar;                                                                // XX000000000
 }
 
 const ratusanMilyaran = num => {
@@ -153,13 +130,13 @@ const ratusanMilyaran = num => {
     if (num[8] !== '0') return `${ratusanMilyar} ${ribuan(num.substr(8, 4))}`;           // XXX00000XXXX
     if (num[9] !== '0') return `${ratusanMilyar} ${ratusan(num.substr(9, 3))}`;          // XXX000000XXX
     if (num[10] !== '0') return `${ratusanMilyar} ${puluhan(num.substr(10, 2))}`;        // XXX0000000XX
-    if (num[11] !== '0') return `${ratusanMilyar} ${satuan(num[11])}`;                   // XXX000000000
-    return ratusanMilyar;
+    if (num[11] !== '0') return `${ratusanMilyar} ${satuan(num[11])}`;                   // XXX00000000X
+    return ratusanMilyar;                                                                // XXX000000000
 };
 
 const ejaanAngka = (num) => {
-    // check if the passed parameter is a number
-    const regex = /\d+/;
+    // check if the passed parameter is a valid number
+    const regex = /^\d+$/;
     if (!regex.test(num) || num[0] === "0") {
         console.log("error: can not proceed since the number inputted is invalid or not a positive number");
         return;
@@ -179,4 +156,4 @@ const ejaanAngka = (num) => {
     if (num.length === 12) return ratusanMilyaran(num);
 }
 
-console.log(ejaanAngka("212005"));
+console.log(ejaanAngka("205"));
