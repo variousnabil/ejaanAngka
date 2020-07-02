@@ -60,44 +60,26 @@ const ribuan = num => {
     } else {
         ribu = `${satuan(num[0])} ribu`;
     }
-    if (num[1] === "0" && num[2] === "0" && num[3] === "0") {               // X000                                                    
-        return `${ribu}`;
-    }
-    if (num[1] === "0" && num[2] === "0") {                                 // X00X                                                    
-        return `${ribu} ${satuan(num[3])}`;
-    }
-    if (num[1] === "0") {                                                   // X0XX
-        return `${ribu} ${puluhan(num.substr(2, 2))}`;
-    }
-    return `${ribu} ${ratusan(num.substr(1, 3))}`;                          // XXXX
+    if (num[1] !== '0') return `${ribu} ${ratusan(num.substr(1, 3))}`;   // XXXX
+    if (num[2] !== '0') return `${ribu} ${puluhan(num.substr(2, 2))}`;   // X0XX
+    if (num[3] !== '0') return `${ribu} ${satuan(num.substr(3, 1))}`;    // X00X
+    return `${ribu}`;                                                    // X000
 }
 
 const puluhanRibuan = num => {
     let puluhanRibu = `${puluhan(num.substr(0, 2))} ribu`;
-    if (num[2] === "0" && num[3] === "0" && num[4] === "0") {               // XX000
-        return puluhanRibu;
-    }
-    if (num[2] === "0" && num[3] === "0") {                                 // XX00X
-        return `${puluhanRibu} ${satuan(num[4])}`
-    }
-    if (num[2] === "0") {                                                   // XX0XX
-        return `${puluhanRibu} ${puluhan(num.substr(3, 2))}`;
-    }
-    return `${puluhanRibu} ${ratusan(num.substr(2, 3))}`;                   // XXXXX
+    if (num[2] !== '0') return `${puluhanRibu} ${ratusan(num.substr(2, 3))}`;   // XXXXX
+    if (num[3] !== '0') return `${puluhanRibu} ${puluhan(num.substr(3, 2))}`;   // XX0XX
+    if (num[4] !== '0') return `${puluhanRibu} ${satuan(num.substr(4, 1))}`;    // XX00X
+    return `${puluhanRibu}`;                                                    // XX000
 }
 
 const ratusanRibuan = num => {
     let ratusanRibu = `${ratusan(num.substr(0, 3))} ribu`;
-    if (num[3] === "0" && num[4] === "0" && num[5] === "0") {               // XXX000
-        return ratusanRibu;
-    }
-    if (num[3] === "0" && num[4] === "0") {                                 // XXX00X
-        return `${ratusanRibu} ${satuan(num[5])}`
-    }
-    if (num[3] === "0") {                                                   // XXX0XX
-        return `${ratusanRibu} ${puluhan(num.substr(4, 2))}`;
-    }
-    return `${ratusanRibu} ${ratusan(num.substr(3, 3))}`;                   // XXXXXX
+    if (num[3] !== '0') return `${ratusanRibu} ${ratusan(num.substr(3, 3))}`;   // XXXXXX
+    if (num[4] !== '0') return `${ratusanRibu} ${puluhan(num.substr(4, 2))}`;   // XXX0XX
+    if (num[5] !== '0') return `${ratusanRibu} ${satuan(num.substr(5, 1))}`;    // XXX00X
+    return `${ratusanRibu}`;                                                    // XXX000
 }
 
 const jutaan = num => {
@@ -197,4 +179,4 @@ const ejaanAngka = (num) => {
     if (num.length === 12) return ratusanMilyaran(num);
 }
 
-console.log(ejaanAngka("23809821"));
+console.log(ejaanAngka("212005"));
