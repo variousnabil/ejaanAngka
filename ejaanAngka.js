@@ -134,6 +134,23 @@ const ratusanMilyaran = num => {
     return ratusanMilyar;                                                                // XXX000000000
 };
 
+const triliunan = num => {
+    let triliun = `${satuan(num[0])} triliun`;
+    if (num[1] !== '0') return `${triliun} ${ratusanMilyaran(num.substr(1, 12))}`;       // XXXXXXXXXXXXX      
+    if (num[2] !== '0') return `${triliun} ${puluhanMilyaran(num.substr(2, 11))}`;       // X0XXXXXXXXXXX
+    if (num[3] !== '0') return `${triliun} ${milyaran(num.substr(3, 10))}`;              // X00XXXXXXXXXX
+    if (num[4] !== '0') return `${triliun} ${ratusanJutaan(num.substr(4, 9))}`;          // X000XXXXXXXXX
+    if (num[5] !== '0') return `${triliun} ${puluhanJutaan(num.substr(5, 8))}`;          // X0000XXXXXXXX
+    if (num[6] !== '0') return `${triliun} ${jutaan(num.substr(6, 7))}`;                 // X00000XXXXXXX
+    if (num[7] !== '0') return `${triliun} ${ratusanRibuan(num.substr(7, 6))}`;          // X000000XXXXXX     
+    if (num[8] !== '0') return `${triliun} ${puluhanRibuan(num.substr(8, 5))}`;          // X0000000XXXXX
+    if (num[9] !== '0') return `${triliun} ${ribuan(num.substr(9, 4))}`;                 // X00000000XXXX
+    if (num[10] !== '0') return `${triliun} ${ratusan(num.substr(10, 3))}`;              // X000000000XXX
+    if (num[11] !== '0') return `${triliun} ${puluhan(num.substr(11, 2))}`;              // X0000000000XX
+    if (num[12] !== '0') return `${triliun} ${satuan(num.substr(12, 1))}`;               // X00000000000X
+    return `${triliun}`;                                                                 // X000000000000     
+};
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a valid number
     const regex = /^\d+$/;
@@ -154,6 +171,7 @@ const ejaanAngka = (num) => {
     if (num.length === 10) return milyaran(num);
     if (num.length === 11) return puluhanMilyaran(num);
     if (num.length === 12) return ratusanMilyaran(num);
+    if (num.length === 13) return triliunan(num);
 }
 
-console.log(ejaanAngka("205"));
+console.log(ejaanAngka("2004003005000"));
