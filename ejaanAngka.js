@@ -168,6 +168,23 @@ const puluhanTriliunan = num => {
     return `${puluhanTriliun}`;                                                                 // XX000000000000     
 };
 
+const ratusanTriliunan = num => {
+    let ratusanTriliun = `${ratusan(num.substr(0, 3))} triliun`;
+    if (num[3] !== '0') return `${ratusanTriliun} ${ratusanMilyaran(num.substr(3, 12))}`;       // XXXXXXXXXXXXXXX      
+    if (num[4] !== '0') return `${ratusanTriliun} ${puluhanMilyaran(num.substr(4, 11))}`;       // XXX0XXXXXXXXXXX
+    if (num[5] !== '0') return `${ratusanTriliun} ${milyaran(num.substr(5, 10))}`;              // XXX00XXXXXXXXXX
+    if (num[6] !== '0') return `${ratusanTriliun} ${ratusanJutaan(num.substr(6, 9))}`;          // XXX000XXXXXXXXX
+    if (num[7] !== '0') return `${ratusanTriliun} ${puluhanJutaan(num.substr(7, 8))}`;          // XXX0000XXXXXXXX
+    if (num[8] !== '0') return `${ratusanTriliun} ${jutaan(num.substr(8, 7))}`;                 // XXX00000XXXXXXX
+    if (num[9] !== '0') return `${ratusanTriliun} ${ratusanRibuan(num.substr(9, 6))}`;          // XXX000000XXXXXX     
+    if (num[10] !== '0') return `${ratusanTriliun} ${puluhanRibuan(num.substr(10, 5))}`;        // XXX0000000XXXXX
+    if (num[11] !== '0') return `${ratusanTriliun} ${ribuan(num.substr(11, 4))}`;               // XXX00000000XXXX
+    if (num[12] !== '0') return `${ratusanTriliun} ${ratusan(num.substr(12, 3))}`;              // XXX000000000XXX
+    if (num[13] !== '0') return `${ratusanTriliun} ${puluhan(num.substr(13, 2))}`;              // XXX0000000000XX
+    if (num[14] !== '0') return `${ratusanTriliun} ${satuan(num.substr(14, 1))}`;               // XXX00000000000X
+    return `${ratusanTriliun}`;                                                                 // XXX000000000000     
+};
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a valid number
     const regex = /^\d+$/;
@@ -190,6 +207,7 @@ const ejaanAngka = (num) => {
     if (num.length === 12) return ratusanMilyaran(num);
     if (num.length === 13) return triliunan(num);
     if (num.length === 14) return puluhanTriliunan(num);
+    if (num.length === 15) return ratusanTriliunan(num);
 }
 
-console.log(ejaanAngka("22004003005000"));
+console.log(ejaanAngka("222004003005000"));
