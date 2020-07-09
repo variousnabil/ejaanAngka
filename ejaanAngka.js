@@ -185,6 +185,26 @@ const ratusanTriliunan = num => {
     return `${ratusanTriliun}`;                                                                 // XXX000000000000     
 };
 
+const quadriliunan = num => {
+    let quadriliun = `${satuan(num[0])} quadriliun`;
+    if (num[1] !== '0') return `${quadriliun} ${ratusanTriliunan(num.substr(1, 15))}`;
+    if (num[2] !== '0') return `${quadriliun} ${puluhanTriliunan(num.substr(2, 14))}`;
+    if (num[3] !== '0') return `${quadriliun} ${triliunan(num.substr(3, 13))}`;
+    if (num[4] !== '0') return `${quadriliun} ${ratusanMilyaran(num.substr(4, 12))}`;
+    if (num[5] !== '0') return `${quadriliun} ${puluhanMilyaran(num.substr(5, 11))}`;
+    if (num[6] !== '0') return `${quadriliun} ${milyaran(num.substr(6, 10))}`;
+    if (num[7] !== '0') return `${quadriliun} ${ratusanJutaan(num.substr(7, 9))}`;
+    if (num[8] !== '0') return `${quadriliun} ${puluhanJutaan(num.substr(8, 8))}`;
+    if (num[9] !== '0') return `${quadriliun} ${jutaan(num.substr(9, 7))}`;
+    if (num[10] !== '0') return `${quadriliun} ${ratusanRibuan(num.substr(10, 6))}`;
+    if (num[11] !== '0') return `${quadriliun} ${puluhanRibuan(num.substr(11, 5))}`;
+    if (num[12] !== '0') return `${quadriliun} ${ribuan(num.substr(12, 4))}`;
+    if (num[13] !== '0') return `${quadriliun} ${ratusan(num.substr(13, 3))}`;
+    if (num[14] !== '0') return `${quadriliun} ${puluhan(num.substr(14, 2))}`;
+    if (num[15] !== '0') return `${quadriliun} ${satuan(num.substr(15, 1))}`;
+    return `${quadriliun}`;
+};
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a valid number
     const regex = /^\d+$/;
@@ -208,6 +228,7 @@ const ejaanAngka = (num) => {
     if (num.length === 13) return triliunan(num);
     if (num.length === 14) return puluhanTriliunan(num);
     if (num.length === 15) return ratusanTriliunan(num);
+    if (num.length === 16) return quadriliunan(num);
 }
 
-console.log(ejaanAngka("222004003005000"));
+console.log(ejaanAngka("2222004003005000"));
