@@ -205,6 +205,26 @@ const quadriliunan = num => {
     return `${quadriliun}`;
 };
 
+const puluhanQuadriliunan = num => {
+    let puluhanQuadriliun = `${puluhan(num.substr(0, 2))} quadriliun`;
+    if (num[2] !== '0') return `${puluhanQuadriliun} ${ratusanTriliunan(num.substr(2, 15))}`;
+    if (num[3] !== '0') return `${puluhanQuadriliun} ${puluhanTriliunan(num.substr(3, 14))}`;
+    if (num[4] !== '0') return `${puluhanQuadriliun} ${triliunan(num.substr(4, 13))}`;
+    if (num[5] !== '0') return `${puluhanQuadriliun} ${ratusanMilyaran(num.substr(5, 12))}`;
+    if (num[6] !== '0') return `${puluhanQuadriliun} ${puluhanMilyaran(num.substr(6, 11))}`;
+    if (num[7] !== '0') return `${puluhanQuadriliun} ${milyaran(num.substr(7, 10))}`;
+    if (num[8] !== '0') return `${puluhanQuadriliun} ${ratusanJutaan(num.substr(8, 9))}`;
+    if (num[9] !== '0') return `${puluhanQuadriliun} ${puluhanJutaan(num.substr(9, 8))}`;
+    if (num[10] !== '0') return `${puluhanQuadriliun} ${jutaan(num.substr(10, 7))}`;
+    if (num[11] !== '0') return `${puluhanQuadriliun} ${ratusanRibuan(num.substr(11, 6))}`;
+    if (num[12] !== '0') return `${puluhanQuadriliun} ${puluhanRibuan(num.substr(12, 5))}`;
+    if (num[13] !== '0') return `${puluhanQuadriliun} ${ribuan(num.substr(13, 4))}`;
+    if (num[14] !== '0') return `${puluhanQuadriliun} ${ratusan(num.substr(14, 3))}`;
+    if (num[15] !== '0') return `${puluhanQuadriliun} ${puluhan(num.substr(15, 2))}`;
+    if (num[16] !== '0') return `${puluhanQuadriliun} ${satuan(num.substr(16, 1))}`;
+    return `${puluhanQuadriliun}`;
+};
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a valid number
     const regex = /^\d+$/;
@@ -229,6 +249,7 @@ const ejaanAngka = (num) => {
     if (num.length === 14) return puluhanTriliunan(num);
     if (num.length === 15) return ratusanTriliunan(num);
     if (num.length === 16) return quadriliunan(num);
+    if (num.length === 17) return puluhanQuadriliunan(num);
 }
 
-console.log(ejaanAngka("2222004003005000"));
+console.log(ejaanAngka("22222004003005000"));
