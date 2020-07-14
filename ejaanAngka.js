@@ -268,6 +268,29 @@ const kuantiliunan = num => {
     return `${kuantiliun}`;
 };
 
+const puluhanKuantiliunan = num => {
+    let puluhanKuantiliun = `${puluhan(num.substr(0, 2))} kuantiliun`;
+    if (num[2] !== '0') return `${puluhanKuantiliun} ${ratusanKuadriliunan(num.substr(2, 18))}`;
+    if (num[3] !== '0') return `${puluhanKuantiliun} ${puluhanKuadriliunan(num.substr(3, 17))}`;
+    if (num[4] !== '0') return `${puluhanKuantiliun} ${kuadriliunan(num.substr(4, 16))}`;
+    if (num[5] !== '0') return `${puluhanKuantiliun} ${ratusanTriliunan(num.substr(5, 15))}`;
+    if (num[6] !== '0') return `${puluhanKuantiliun} ${puluhanTriliunan(num.substr(6, 14))}`;
+    if (num[7] !== '0') return `${puluhanKuantiliun} ${triliunan(num.substr(7, 13))}`;
+    if (num[8] !== '0') return `${puluhanKuantiliun} ${ratusanMilyaran(num.substr(8, 12))}`;
+    if (num[9] !== '0') return `${puluhanKuantiliun} ${puluhanMilyaran(num.substr(9, 11))}`;
+    if (num[10] !== '0') return `${puluhanKuantiliun} ${milyaran(num.substr(10, 10))}`;
+    if (num[11] !== '0') return `${puluhanKuantiliun} ${ratusanJutaan(num.substr(11, 9))}`;
+    if (num[12] !== '0') return `${puluhanKuantiliun} ${puluhanJutaan(num.substr(12, 8))}`;
+    if (num[13] !== '0') return `${puluhanKuantiliun} ${jutaan(num.substr(13, 7))}`;
+    if (num[14] !== '0') return `${puluhanKuantiliun} ${ratusanRibuan(num.substr(14, 6))}`;
+    if (num[15] !== '0') return `${puluhanKuantiliun} ${puluhanRibuan(num.substr(15, 5))}`;
+    if (num[16] !== '0') return `${puluhanKuantiliun} ${ribuan(num.substr(16, 4))}`;
+    if (num[17] !== '0') return `${puluhanKuantiliun} ${ratusan(num.substr(17, 3))}`;
+    if (num[18] !== '0') return `${puluhanKuantiliun} ${puluhan(num.substr(18, 2))}`;
+    if (num[19] !== '0') return `${puluhanKuantiliun} ${satuan(num.substr(19, 1))}`;
+    return `${puluhanKuantiliun}`;
+};
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a valid number
     const regex = /^\d+$/;
@@ -295,6 +318,7 @@ const ejaanAngka = (num) => {
     if (num.length === 17) return puluhanKuadriliunan(num);
     if (num.length === 18) return ratusanKuadriliunan(num);
     if (num.length === 19) return kuantiliunan(num);
+    if (num.length === 20) return puluhanKuantiliunan(num);
 }
 
-console.log(ejaanAngka("2322222004003005000"));
+console.log(ejaanAngka("22322222004003005000"));
