@@ -185,64 +185,87 @@ const ratusanTriliunan = num => {
     return `${ratusanTriliun}`;                                                                 // XXX000000000000     
 };
 
-const quadriliunan = num => {
-    let quadriliun = `${satuan(num[0])} quadriliun`;
-    if (num[1] !== '0') return `${quadriliun} ${ratusanTriliunan(num.substr(1, 15))}`;
-    if (num[2] !== '0') return `${quadriliun} ${puluhanTriliunan(num.substr(2, 14))}`;
-    if (num[3] !== '0') return `${quadriliun} ${triliunan(num.substr(3, 13))}`;
-    if (num[4] !== '0') return `${quadriliun} ${ratusanMilyaran(num.substr(4, 12))}`;
-    if (num[5] !== '0') return `${quadriliun} ${puluhanMilyaran(num.substr(5, 11))}`;
-    if (num[6] !== '0') return `${quadriliun} ${milyaran(num.substr(6, 10))}`;
-    if (num[7] !== '0') return `${quadriliun} ${ratusanJutaan(num.substr(7, 9))}`;
-    if (num[8] !== '0') return `${quadriliun} ${puluhanJutaan(num.substr(8, 8))}`;
-    if (num[9] !== '0') return `${quadriliun} ${jutaan(num.substr(9, 7))}`;
-    if (num[10] !== '0') return `${quadriliun} ${ratusanRibuan(num.substr(10, 6))}`;
-    if (num[11] !== '0') return `${quadriliun} ${puluhanRibuan(num.substr(11, 5))}`;
-    if (num[12] !== '0') return `${quadriliun} ${ribuan(num.substr(12, 4))}`;
-    if (num[13] !== '0') return `${quadriliun} ${ratusan(num.substr(13, 3))}`;
-    if (num[14] !== '0') return `${quadriliun} ${puluhan(num.substr(14, 2))}`;
-    if (num[15] !== '0') return `${quadriliun} ${satuan(num.substr(15, 1))}`;
-    return `${quadriliun}`;
+const kuadriliunan = num => {
+    let kuadriliun = `${satuan(num[0])} kuadriliun`;
+    if (num[1] !== '0') return `${kuadriliun} ${ratusanTriliunan(num.substr(1, 15))}`;
+    if (num[2] !== '0') return `${kuadriliun} ${puluhanTriliunan(num.substr(2, 14))}`;
+    if (num[3] !== '0') return `${kuadriliun} ${triliunan(num.substr(3, 13))}`;
+    if (num[4] !== '0') return `${kuadriliun} ${ratusanMilyaran(num.substr(4, 12))}`;
+    if (num[5] !== '0') return `${kuadriliun} ${puluhanMilyaran(num.substr(5, 11))}`;
+    if (num[6] !== '0') return `${kuadriliun} ${milyaran(num.substr(6, 10))}`;
+    if (num[7] !== '0') return `${kuadriliun} ${ratusanJutaan(num.substr(7, 9))}`;
+    if (num[8] !== '0') return `${kuadriliun} ${puluhanJutaan(num.substr(8, 8))}`;
+    if (num[9] !== '0') return `${kuadriliun} ${jutaan(num.substr(9, 7))}`;
+    if (num[10] !== '0') return `${kuadriliun} ${ratusanRibuan(num.substr(10, 6))}`;
+    if (num[11] !== '0') return `${kuadriliun} ${puluhanRibuan(num.substr(11, 5))}`;
+    if (num[12] !== '0') return `${kuadriliun} ${ribuan(num.substr(12, 4))}`;
+    if (num[13] !== '0') return `${kuadriliun} ${ratusan(num.substr(13, 3))}`;
+    if (num[14] !== '0') return `${kuadriliun} ${puluhan(num.substr(14, 2))}`;
+    if (num[15] !== '0') return `${kuadriliun} ${satuan(num.substr(15, 1))}`;
+    return `${kuadriliun}`;
 };
 
-const puluhanQuadriliunan = num => {
-    let puluhanQuadriliun = `${puluhan(num.substr(0, 2))} quadriliun`;
-    if (num[2] !== '0') return `${puluhanQuadriliun} ${ratusanTriliunan(num.substr(2, 15))}`;
-    if (num[3] !== '0') return `${puluhanQuadriliun} ${puluhanTriliunan(num.substr(3, 14))}`;
-    if (num[4] !== '0') return `${puluhanQuadriliun} ${triliunan(num.substr(4, 13))}`;
-    if (num[5] !== '0') return `${puluhanQuadriliun} ${ratusanMilyaran(num.substr(5, 12))}`;
-    if (num[6] !== '0') return `${puluhanQuadriliun} ${puluhanMilyaran(num.substr(6, 11))}`;
-    if (num[7] !== '0') return `${puluhanQuadriliun} ${milyaran(num.substr(7, 10))}`;
-    if (num[8] !== '0') return `${puluhanQuadriliun} ${ratusanJutaan(num.substr(8, 9))}`;
-    if (num[9] !== '0') return `${puluhanQuadriliun} ${puluhanJutaan(num.substr(9, 8))}`;
-    if (num[10] !== '0') return `${puluhanQuadriliun} ${jutaan(num.substr(10, 7))}`;
-    if (num[11] !== '0') return `${puluhanQuadriliun} ${ratusanRibuan(num.substr(11, 6))}`;
-    if (num[12] !== '0') return `${puluhanQuadriliun} ${puluhanRibuan(num.substr(12, 5))}`;
-    if (num[13] !== '0') return `${puluhanQuadriliun} ${ribuan(num.substr(13, 4))}`;
-    if (num[14] !== '0') return `${puluhanQuadriliun} ${ratusan(num.substr(14, 3))}`;
-    if (num[15] !== '0') return `${puluhanQuadriliun} ${puluhan(num.substr(15, 2))}`;
-    if (num[16] !== '0') return `${puluhanQuadriliun} ${satuan(num.substr(16, 1))}`;
-    return `${puluhanQuadriliun}`;
+const puluhanKuadriliunan = num => {
+    let puluhanKuadriliun = `${puluhan(num.substr(0, 2))} kuadriliun`;
+    if (num[2] !== '0') return `${puluhanKuadriliun} ${ratusanTriliunan(num.substr(2, 15))}`;
+    if (num[3] !== '0') return `${puluhanKuadriliun} ${puluhanTriliunan(num.substr(3, 14))}`;
+    if (num[4] !== '0') return `${puluhanKuadriliun} ${triliunan(num.substr(4, 13))}`;
+    if (num[5] !== '0') return `${puluhanKuadriliun} ${ratusanMilyaran(num.substr(5, 12))}`;
+    if (num[6] !== '0') return `${puluhanKuadriliun} ${puluhanMilyaran(num.substr(6, 11))}`;
+    if (num[7] !== '0') return `${puluhanKuadriliun} ${milyaran(num.substr(7, 10))}`;
+    if (num[8] !== '0') return `${puluhanKuadriliun} ${ratusanJutaan(num.substr(8, 9))}`;
+    if (num[9] !== '0') return `${puluhanKuadriliun} ${puluhanJutaan(num.substr(9, 8))}`;
+    if (num[10] !== '0') return `${puluhanKuadriliun} ${jutaan(num.substr(10, 7))}`;
+    if (num[11] !== '0') return `${puluhanKuadriliun} ${ratusanRibuan(num.substr(11, 6))}`;
+    if (num[12] !== '0') return `${puluhanKuadriliun} ${puluhanRibuan(num.substr(12, 5))}`;
+    if (num[13] !== '0') return `${puluhanKuadriliun} ${ribuan(num.substr(13, 4))}`;
+    if (num[14] !== '0') return `${puluhanKuadriliun} ${ratusan(num.substr(14, 3))}`;
+    if (num[15] !== '0') return `${puluhanKuadriliun} ${puluhan(num.substr(15, 2))}`;
+    if (num[16] !== '0') return `${puluhanKuadriliun} ${satuan(num.substr(16, 1))}`;
+    return `${puluhanKuadriliun}`;
 };
 
-const ratusanQuadriliunan = num => {
-    let ratusanQuadriliun = `${ratusan(num.substr(0, 3))} quadriliun`;
-    if (num[2] !== '0') return `${ratusanQuadriliun} ${ratusanTriliunan(num.substr(3, 15))}`;
-    if (num[3] !== '0') return `${ratusanQuadriliun} ${puluhanTriliunan(num.substr(4, 14))}`;
-    if (num[4] !== '0') return `${ratusanQuadriliun} ${triliunan(num.substr(5, 13))}`;
-    if (num[5] !== '0') return `${ratusanQuadriliun} ${ratusanMilyaran(num.substr(6, 12))}`;
-    if (num[6] !== '0') return `${ratusanQuadriliun} ${puluhanMilyaran(num.substr(7, 11))}`;
-    if (num[7] !== '0') return `${ratusanQuadriliun} ${milyaran(num.substr(8, 10))}`;
-    if (num[8] !== '0') return `${ratusanQuadriliun} ${ratusanJutaan(num.substr(9, 9))}`;
-    if (num[9] !== '0') return `${ratusanQuadriliun} ${puluhanJutaan(num.substr(10, 8))}`;
-    if (num[10] !== '0') return `${ratusanQuadriliun} ${jutaan(num.substr(11, 7))}`;
-    if (num[11] !== '0') return `${ratusanQuadriliun} ${ratusanRibuan(num.substr(12, 6))}`;
-    if (num[12] !== '0') return `${ratusanQuadriliun} ${puluhanRibuan(num.substr(13, 5))}`;
-    if (num[13] !== '0') return `${ratusanQuadriliun} ${ribuan(num.substr(14, 4))}`;
-    if (num[14] !== '0') return `${ratusanQuadriliun} ${ratusan(num.substr(15, 3))}`;
-    if (num[15] !== '0') return `${ratusanQuadriliun} ${puluhan(num.substr(16, 2))}`;
-    if (num[16] !== '0') return `${ratusanQuadriliun} ${satuan(num.substr(17, 1))}`;
-    return `${ratusanQuadriliun}`;
+const ratusanKuadriliunan = num => {
+    let ratusanKuadriliun = `${ratusan(num.substr(0, 3))} kuadriliun`;
+    if (num[2] !== '0') return `${ratusanKuadriliun} ${ratusanTriliunan(num.substr(3, 15))}`;
+    if (num[3] !== '0') return `${ratusanKuadriliun} ${puluhanTriliunan(num.substr(4, 14))}`;
+    if (num[4] !== '0') return `${ratusanKuadriliun} ${triliunan(num.substr(5, 13))}`;
+    if (num[5] !== '0') return `${ratusanKuadriliun} ${ratusanMilyaran(num.substr(6, 12))}`;
+    if (num[6] !== '0') return `${ratusanKuadriliun} ${puluhanMilyaran(num.substr(7, 11))}`;
+    if (num[7] !== '0') return `${ratusanKuadriliun} ${milyaran(num.substr(8, 10))}`;
+    if (num[8] !== '0') return `${ratusanKuadriliun} ${ratusanJutaan(num.substr(9, 9))}`;
+    if (num[9] !== '0') return `${ratusanKuadriliun} ${puluhanJutaan(num.substr(10, 8))}`;
+    if (num[10] !== '0') return `${ratusanKuadriliun} ${jutaan(num.substr(11, 7))}`;
+    if (num[11] !== '0') return `${ratusanKuadriliun} ${ratusanRibuan(num.substr(12, 6))}`;
+    if (num[12] !== '0') return `${ratusanKuadriliun} ${puluhanRibuan(num.substr(13, 5))}`;
+    if (num[13] !== '0') return `${ratusanKuadriliun} ${ribuan(num.substr(14, 4))}`;
+    if (num[14] !== '0') return `${ratusanKuadriliun} ${ratusan(num.substr(15, 3))}`;
+    if (num[15] !== '0') return `${ratusanKuadriliun} ${puluhan(num.substr(16, 2))}`;
+    if (num[16] !== '0') return `${ratusanKuadriliun} ${satuan(num.substr(17, 1))}`;
+    return `${ratusanKuadriliun}`;
+};
+
+const kuantiliunan = num => {
+    let kuantiliun = `${satuan(num[0])} kuantiliun`;
+    if (num[1] !== '0') return `${kuantiliun} ${ratusanKuadriliunan(num.substr(1, 18))}`;
+    if (num[2] !== '0') return `${kuantiliun} ${puluhanKuadriliunan(num.substr(2, 17))}`;
+    if (num[3] !== '0') return `${kuantiliun} ${kuadriliunan(num.substr(3, 16))}`;
+    if (num[4] !== '0') return `${kuantiliun} ${ratusanTriliunan(num.substr(4, 15))}`;
+    if (num[5] !== '0') return `${kuantiliun} ${puluhanTriliunan(num.substr(5, 14))}`;
+    if (num[6] !== '0') return `${kuantiliun} ${triliunan(num.substr(6, 13))}`;
+    if (num[7] !== '0') return `${kuantiliun} ${ratusanMilyaran(num.substr(7, 12))}`;
+    if (num[8] !== '0') return `${kuantiliun} ${puluhanMilyaran(num.substr(8, 11))}`;
+    if (num[9] !== '0') return `${kuantiliun} ${milyaran(num.substr(9, 10))}`;
+    if (num[10] !== '0') return `${kuantiliun} ${ratusanJutaan(num.substr(10, 9))}`;
+    if (num[11] !== '0') return `${kuantiliun} ${puluhanJutaan(num.substr(11, 8))}`;
+    if (num[12] !== '0') return `${kuantiliun} ${jutaan(num.substr(12, 7))}`;
+    if (num[13] !== '0') return `${kuantiliun} ${ratusanRibuan(num.substr(13, 6))}`;
+    if (num[14] !== '0') return `${kuantiliun} ${puluhanRibuan(num.substr(14, 5))}`;
+    if (num[15] !== '0') return `${kuantiliun} ${ribuan(num.substr(15, 4))}`;
+    if (num[16] !== '0') return `${kuantiliun} ${ratusan(num.substr(16, 3))}`;
+    if (num[17] !== '0') return `${kuantiliun} ${puluhan(num.substr(17, 2))}`;
+    if (num[18] !== '0') return `${kuantiliun} ${satuan(num.substr(18, 1))}`;
+    return `${kuantiliun}`;
 };
 
 const ejaanAngka = (num) => {
@@ -268,9 +291,10 @@ const ejaanAngka = (num) => {
     if (num.length === 13) return triliunan(num);
     if (num.length === 14) return puluhanTriliunan(num);
     if (num.length === 15) return ratusanTriliunan(num);
-    if (num.length === 16) return quadriliunan(num);
-    if (num.length === 17) return puluhanQuadriliunan(num);
-    if (num.length === 18) return ratusanQuadriliunan(num);
+    if (num.length === 16) return kuadriliunan(num);
+    if (num.length === 17) return puluhanKuadriliunan(num);
+    if (num.length === 18) return ratusanKuadriliunan(num);
+    if (num.length === 19) return kuantiliunan(num);
 }
 
-console.log(ejaanAngka("322222004003005000"));
+console.log(ejaanAngka("2322222004003005000"));
