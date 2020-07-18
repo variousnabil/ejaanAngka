@@ -314,6 +314,32 @@ const ratusanKuantiliunan = num => {
     return `${ratusanKuantiliun}`;
 };
 
+const sekstiliunan = num => {
+    let sekstiliun = `${satuan(num[0])} sekstiliun`;
+    if (num[1] !== '0') return `${sekstiliun} ${ratusanKuantiliunan(num.substr(1, 21))}`;
+    if (num[2] !== '0') return `${sekstiliun} ${puluhanKuantiliunan(num.substr(2, 20))}`;
+    if (num[3] !== '0') return `${sekstiliun} ${kuantiliunan(num.substr(3, 19))}`;
+    if (num[4] !== '0') return `${sekstiliun} ${ratusanKuadriliunan(num.substr(4, 18))}`;
+    if (num[5] !== '0') return `${sekstiliun} ${puluhanKuadriliunan(num.substr(5, 17))}`;
+    if (num[6] !== '0') return `${sekstiliun} ${kuadriliunan(num.substr(6, 16))}`;
+    if (num[7] !== '0') return `${sekstiliun} ${ratusanTriliunan(num.substr(7, 15))}`;
+    if (num[8] !== '0') return `${sekstiliun} ${puluhanTriliunan(num.substr(8, 14))}`;
+    if (num[9] !== '0') return `${sekstiliun} ${triliunan(num.substr(9, 13))}`;
+    if (num[10] !== '0') return `${sekstiliun} ${ratusanMilyaran(num.substr(10, 12))}`;
+    if (num[11] !== '0') return `${sekstiliun} ${puluhanMilyaran(num.substr(11, 11))}`;
+    if (num[12] !== '0') return `${sekstiliun} ${milyaran(num.substr(12, 10))}`;
+    if (num[13] !== '0') return `${sekstiliun} ${ratusanJutaan(num.substr(13, 9))}`;
+    if (num[14] !== '0') return `${sekstiliun} ${puluhanJutaan(num.substr(14, 8))}`;
+    if (num[15] !== '0') return `${sekstiliun} ${jutaan(num.substr(15, 7))}`;
+    if (num[16] !== '0') return `${sekstiliun} ${ratusanRibuan(num.substr(16, 6))}`;
+    if (num[17] !== '0') return `${sekstiliun} ${puluhanRibuan(num.substr(17, 5))}`;
+    if (num[18] !== '0') return `${sekstiliun} ${ribuan(num.substr(18, 4))}`;
+    if (num[19] !== '0') return `${sekstiliun} ${ratusan(num.substr(19, 3))}`;
+    if (num[20] !== '0') return `${sekstiliun} ${puluhan(num.substr(20, 2))}`;
+    if (num[21] !== '0') return `${sekstiliun} ${satuan(num.substr(21, 1))}`;
+    return `${sekstiliun}`;
+};
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a valid number
     const regex = /^\d+$/;
@@ -343,6 +369,7 @@ const ejaanAngka = (num) => {
     if (num.length === 19) return kuantiliunan(num);
     if (num.length === 20) return puluhanKuantiliunan(num);
     if (num.length === 21) return ratusanKuantiliunan(num);
+    if (num.length === 22) return sekstiliunan(num);
 }
 
-console.log(ejaanAngka("222322222004003005000"));
+console.log(ejaanAngka("9222322222004003005000"));
