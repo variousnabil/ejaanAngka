@@ -340,6 +340,32 @@ const sekstiliunan = num => {
     return `${sekstiliun}`;
 };
 
+const puluhanSekstiliunan = num => {
+    let puluhanSekstiliun = `${puluhan(num.substr(0, 2))} sekstiliun`;
+    if (num[2] !== '0') return `${puluhanSekstiliun} ${ratusanKuantiliunan(num.substr(2, 21))}`;
+    if (num[3] !== '0') return `${puluhanSekstiliun} ${puluhanKuantiliunan(num.substr(3, 20))}`;
+    if (num[4] !== '0') return `${puluhanSekstiliun} ${kuantiliunan(num.substr(4, 19))}`;
+    if (num[5] !== '0') return `${puluhanSekstiliun} ${ratusanKuadriliunan(num.substr(5, 18))}`;
+    if (num[6] !== '0') return `${puluhanSekstiliun} ${puluhanKuadriliunan(num.substr(6, 17))}`;
+    if (num[7] !== '0') return `${puluhanSekstiliun} ${kuadriliunan(num.substr(7, 16))}`;
+    if (num[8] !== '0') return `${puluhanSekstiliun} ${ratusanTriliunan(num.substr(8, 15))}`;
+    if (num[9] !== '0') return `${puluhanSekstiliun} ${puluhanTriliunan(num.substr(9, 14))}`;
+    if (num[10] !== '0') return `${puluhanSekstiliun} ${triliunan(num.substr(10, 13))}`;
+    if (num[11] !== '0') return `${puluhanSekstiliun} ${ratusanMilyaran(num.substr(11, 12))}`;
+    if (num[12] !== '0') return `${puluhanSekstiliun} ${puluhanMilyaran(num.substr(12, 11))}`;
+    if (num[13] !== '0') return `${puluhanSekstiliun} ${milyaran(num.substr(13, 10))}`;
+    if (num[14] !== '0') return `${puluhanSekstiliun} ${ratusanJutaan(num.substr(14, 9))}`;
+    if (num[15] !== '0') return `${puluhanSekstiliun} ${puluhanJutaan(num.substr(15, 8))}`;
+    if (num[16] !== '0') return `${puluhanSekstiliun} ${jutaan(num.substr(16, 7))}`;
+    if (num[17] !== '0') return `${puluhanSekstiliun} ${ratusanRibuan(num.substr(17, 6))}`;
+    if (num[18] !== '0') return `${puluhanSekstiliun} ${puluhanRibuan(num.substr(18, 5))}`;
+    if (num[19] !== '0') return `${puluhanSekstiliun} ${ribuan(num.substr(19, 4))}`;
+    if (num[20] !== '0') return `${puluhanSekstiliun} ${ratusan(num.substr(20, 3))}`;
+    if (num[21] !== '0') return `${puluhanSekstiliun} ${puluhan(num.substr(21, 2))}`;
+    if (num[22] !== '0') return `${puluhanSekstiliun} ${satuan(num.substr(22, 1))}`;
+    return `${puluhanSekstiliun}`;
+};
+
 const ejaanAngka = (num) => {
     // check if the passed parameter is a valid number
     const regex = /^\d+$/;
@@ -370,6 +396,7 @@ const ejaanAngka = (num) => {
     if (num.length === 20) return puluhanKuantiliunan(num);
     if (num.length === 21) return ratusanKuantiliunan(num);
     if (num.length === 22) return sekstiliunan(num);
+    if (num.length === 23) return puluhanSekstiliunan(num);
 }
 
-console.log(ejaanAngka("9222322222004003005000"));
+console.log(ejaanAngka("89222322222004003005000"));
